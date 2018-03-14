@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class JavaPlayground {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -23,7 +22,7 @@ public class JavaPlayground {
 
 		br.close();
 		SortInterface a = new MergeSort();
-		int[] rtn = a.sortArray(arr);
+		a.sortArray(arr);
 
 	}
 
