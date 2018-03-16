@@ -7,6 +7,7 @@ import java.io.IOException;
 public class JavaPlayground {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		//int arr[] = { 3,8,2,5,1,4,7,6 };
 		int arr[] = new int[100000];
 
 		File file = new File("/Users/naamanalhashimi/Downloads/IntegerArray2.txt");
@@ -21,9 +22,11 @@ public class JavaPlayground {
 		}
 
 		br.close();
-		SortInterface a = new MergeSort();
+		SortInterface a = new Quicksort();
 		a.sortArray(arr);
-
+		for (i = 0; i < arr.length; i++) {
+			System.out.print(arr[i]+",");
+		}
 	}
 
 }
