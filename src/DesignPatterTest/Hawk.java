@@ -1,4 +1,4 @@
-package DesignPatters;
+package DesignPatterTest;
 
 public class Hawk implements Birds {
 
