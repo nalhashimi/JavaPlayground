@@ -1,4 +1,4 @@
-package DesignPatterTest;
+package stategy;
 
 public class Duck implements Birds {
 

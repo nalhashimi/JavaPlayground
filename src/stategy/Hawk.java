@@ -1,4 +1,4 @@
-package DesignPatterTest;
+package stategy;
 
 public class Hawk implements Birds {
 
