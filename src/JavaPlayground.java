@@ -1,6 +1,15 @@
 
 import java.io.IOException;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
 public class JavaPlayground {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -12,6 +21,28 @@ public class JavaPlayground {
 		for (i = 0; i < arr.length; i++) {
 			System.out.print(arr[i]+",");
 		}
+		System.out.println("");
+		whenPostJsonUsingHttpClient_thenCorrect();
 	}
+	
+	public static void whenPostJsonUsingHttpClient_thenCorrect() 
+			  throws ClientProtocolException, IOException {
+			    CloseableHttpClient client = HttpClients.createDefault();
+			    HttpPost httpPost = new HttpPost("https://asirest-dev.vcfcorp.com/genesysresponse");
+			 
+			    //String json = "{\"id\":1,\"name\":\"John\"}";
+			    String json = "{\"CallStartTime\":\"05/09/2018 11:55:10\",\"Delivery_Store\":\"110\",\"Answer_By\":\"Voicemail\",\"Invoice_Store\":\"110\",\"ASISYSTEM\":\"develop\",\"Invoice_Number\":\"247220\",\"Dialed_Number\":\"7812021110\",\"Request_Callback\":\"NO\"}";
+			    
+			    StringEntity entity = new StringEntity(json);
+			    httpPost.setEntity(entity);
+			    //httpPost.setHeader("Accept", "application/json");
+			    httpPost.setHeader("Content-type", "plain/text; charset=utf-8");
+			 
+			    CloseableHttpResponse response = client.execute(httpPost);
+			    HttpEntity entity1 = response.getEntity();
+			    String ret = EntityUtils.toString(entity1);
+			    System.out.println(ret);
+			    client.close();
+			}
 
 }
